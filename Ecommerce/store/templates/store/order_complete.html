@@ -1,0 +1,15 @@
+{% extends 'store/base.html' %}
+{% block title %}Order Complete - Local Shop{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Thank you for your order!</h1>
+  <p>We received your order details and will prepare it for pickup or delivery.</p>
+  <h2>Order summary</h2>
+  <p><strong>Name:</strong> {{ order_data.name }}</p>
+  <p><strong>Phone:</strong> {{ order_data.phone }}</p>
+  <p><strong>Address:</strong> {{ order_data.address }}</p>
+  <p><strong>Total:</strong> ${{ order_data.total }}</p>
+  <p>If you want to place another order, return to the shop.</p>
+  <a class="button" href="{% url 'store:product_list' %}">Back to shop</a>
+</div>
+{% endblock %}

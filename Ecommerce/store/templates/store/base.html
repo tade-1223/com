@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}My Local Shop{% endblock %}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; background: #f7f7f7; color: #1f2937; }
+    header { background: #1d4ed8; color: white; padding: 1rem; }
+    nav a { margin-right: 1rem; color: white; text-decoration: none; font-weight: 600; }
+    main { padding: 1.5rem; max-width: 1000px; margin: 0 auto; }
+    .card { background: white; padding: 1.25rem; border-radius: 0.75rem; box-shadow: 0 2px 10px rgba(15,23,42,.08); margin-bottom: 1rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .button { display: inline-block; padding: 0.7rem 1.1rem; background: #1d4ed8; color: white; border-radius: 0.5rem; text-decoration: none; border: none; cursor: pointer; }
+    .button:hover { background: #2563eb; }
+    .message { margin-bottom: 1rem; padding: 0.9rem 1rem; border-radius: 0.55rem; }
+    .success { background: #d1fae5; color: #065f46; }
+    .error { background: #fee2e2; color: #991b1b; }
+    .info { background: #bfdbfe; color: #1e3a8a; }
+    label { display: block; font-weight: 600; margin-top: 1rem; }
+    input, textarea { width: 100%; padding: 0.75rem; margin-top: 0.35rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { padding: 0.9rem 0.75rem; border-bottom: 1px solid #e5e7eb; }
+    th { background: #f8fafc; text-align: left; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="{% url 'store:product_list' %}">Home</a>
+      <a href="{% url 'store:cart_detail' %}">Cart</a>
+      <a href="{% url 'store:checkout' %}">Checkout</a>
+    </nav>
+  </header>
+  <main>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

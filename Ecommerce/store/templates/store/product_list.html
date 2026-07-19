@@ -1,0 +1,20 @@
+{% extends 'store/base.html' %}
+{% block title %}Shop Products - Local Store{% endblock %}
+{% block content %}
+<h1>Products</h1>
+<div class="grid">
+  {% for product in products %}
+    <div class="card">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description|default:'No description available.' }}</p>
+      <p><strong>Price:</strong> ${{ product.price }}</p>
+      <p><strong>Stock:</strong> {{ product.stock }}</p>
+      <a class="button" href="{% url 'store:product_detail' product.slug %}">View product</a>
+    </div>
+  {% empty %}
+    <div class="card">
+      <p>No products are available right now.</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
