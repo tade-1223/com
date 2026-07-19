@@ -21,6 +21,7 @@ Django==6.0.4
 executing==2.2.1
 fastjsonschema==2.21.2
 fqdn==1.5.1
+gunicorn==21.2.0
 gitdb==4.0.12
 GitPython==3.1.46
 h11==0.16.0
